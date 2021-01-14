@@ -2,6 +2,7 @@
 
 @echo off
 setlocal enabledelayedexpansion
+set cdpath=%cd%
 
 ::slett og gjør klart folderet
 rmdir /S /Q %appdata%\easycomp\compiled
@@ -61,5 +62,12 @@ IF [%~1]==[] (GOTO ONLYMAIN) ELSE (GOTO RENAMEDMAIN)
    call "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvars64.bat"
    nmake "DEBUG_BUILD=true" clearscreen clean debug.exe
    start %appdata%\easycomp\compiled\debug\debug.exe
+   
+   :: https://stackoverflow.com/questions/3215501/batch-remove-file-extension
+   IF [%~1]==[] (
+      copy "%appdata%\easycomp\compiled\debug\debug.exe" "%cdpath%\main.exe"
+   ) ELSE (
+      for %%f in ("%1") do copy "%appdata%\easycomp\compiled\debug\debug.exe" "%cdpath%\%%~nf.exe"
+   )
 
 :DONE
