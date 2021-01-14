@@ -60,6 +60,6 @@ IF [%~1]==[] (GOTO ONLYMAIN) ELSE (GOTO RENAMEDMAIN)
    cd %appdata%\easycomp\compiled
    call "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvars64.bat"
    nmake "DEBUG_BUILD=true" clearscreen clean debug.exe
-   start C:\Users\haako\AppData\Roaming\easycomp\compiled\debug\debug.exe
+   start %appdata%\easycomp\compiled\debug\debug.exe
 
 :DONE
