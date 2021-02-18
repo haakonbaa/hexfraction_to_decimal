@@ -10,7 +10,7 @@ for x in range(img.size[0]):
         z = complex(0,0)
         for i in range(600):
             z = z**2+c
-            if abs(z) > 1:
+            if abs(z) > 2:
                 num = i
                 break
         g = int(num*255/600)
